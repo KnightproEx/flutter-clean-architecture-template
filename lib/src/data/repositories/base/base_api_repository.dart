@@ -16,12 +16,12 @@ abstract class BaseApiRepository {
       if (httpResponse.response.statusCode == HttpStatus.ok) {
         return Resource.success(httpResponse.data);
       } else {
-        throw DioError(
+        throw DioException(
           response: httpResponse.response,
           requestOptions: httpResponse.response.requestOptions,
         );
       }
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       return Resource.failure(error);
     }
   }

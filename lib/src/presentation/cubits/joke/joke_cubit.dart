@@ -20,12 +20,8 @@ class JokeCubit extends Cubit<JokeState> {
   Future<void> getJoke() async {
     emit(const JokeState.loading());
     final response = await _jokeRepository.getJoke();
-    debugPrint(response.toString());
     response.when(
-      success: (joke) {
-        emit(JokeState.success(joke));
-        debugPrint(joke.toString());
-      },
+      success: (joke) => emit(JokeState.success(joke)),
       failure: (error) => emit(
           JokeState.failure(error.message ?? 'An unexpected error occurred')),
     );

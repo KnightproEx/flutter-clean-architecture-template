@@ -19,19 +19,19 @@ mixin _$Resource<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(DioError error) failure,
+    required TResult Function(DioException error) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(DioError error)? failure,
+    TResult? Function(DioException error)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(DioError error)? failure,
+    TResult Function(DioException error)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,7 +140,7 @@ class _$Success<T> implements Success<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(DioError error) failure,
+    required TResult Function(DioException error) failure,
   }) {
     return success(data);
   }
@@ -149,7 +149,7 @@ class _$Success<T> implements Success<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(DioError error)? failure,
+    TResult? Function(DioException error)? failure,
   }) {
     return success?.call(data);
   }
@@ -158,7 +158,7 @@ class _$Success<T> implements Success<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(DioError error)? failure,
+    TResult Function(DioException error)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -214,7 +214,7 @@ abstract class _$$FailureCopyWith<T, $Res> {
           _$Failure<T> value, $Res Function(_$Failure<T>) then) =
       __$$FailureCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({DioError error});
+  $Res call({DioException error});
 }
 
 /// @nodoc
@@ -234,7 +234,7 @@ class __$$FailureCopyWithImpl<T, $Res>
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as DioError,
+              as DioException,
     ));
   }
 }
@@ -245,7 +245,7 @@ class _$Failure<T> implements Failure<T> {
   const _$Failure(this.error);
 
   @override
-  final DioError error;
+  final DioException error;
 
   @override
   String toString() {
@@ -273,7 +273,7 @@ class _$Failure<T> implements Failure<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(DioError error) failure,
+    required TResult Function(DioException error) failure,
   }) {
     return failure(error);
   }
@@ -282,7 +282,7 @@ class _$Failure<T> implements Failure<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(DioError error)? failure,
+    TResult? Function(DioException error)? failure,
   }) {
     return failure?.call(error);
   }
@@ -291,7 +291,7 @@ class _$Failure<T> implements Failure<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(DioError error)? failure,
+    TResult Function(DioException error)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -333,9 +333,9 @@ class _$Failure<T> implements Failure<T> {
 }
 
 abstract class Failure<T> implements Resource<T> {
-  const factory Failure(final DioError error) = _$Failure<T>;
+  const factory Failure(final DioException error) = _$Failure<T>;
 
-  DioError get error;
+  DioException get error;
   @JsonKey(ignore: true)
   _$$FailureCopyWith<T, _$Failure<T>> get copyWith =>
       throw _privateConstructorUsedError;

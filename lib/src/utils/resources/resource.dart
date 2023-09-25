@@ -6,5 +6,5 @@ part 'resource.freezed.dart';
 @freezed
 sealed class Resource<T> with _$Resource<T> {
   const factory Resource.success(T data) = Success;
-  const factory Resource.failure(DioError error) = Failure;
+  const factory Resource.failure(DioException error) = Failure;
 }

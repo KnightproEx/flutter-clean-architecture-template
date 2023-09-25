@@ -14,20 +14,22 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<JokeCubit, JokeState>(
         builder: (context, state) {
-          return Column(
-            children: [
-              Text(
+          return Padding(
+            padding: const EdgeInsets.only(top: 40),
+            child: Column(
+              children: [
                 state.when(
-                    initial: () => 'initial',
-                    loading: () => 'loading',
-                    success: (joke) => '$joke',
-                    failure: (message) => message),
-              ),
-              ElevatedButton(
-                onPressed: () async => cubit.getJoke(),
-                child: const Text('Get Joke'),
-              ),
-            ],
+                  initial: () => const Text('initial'),
+                  loading: () => const LinearProgressIndicator(),
+                  success: (joke) => Text('$joke'),
+                  failure: Text.new,
+                ),
+                ElevatedButton(
+                  onPressed: () async => cubit.getJoke(),
+                  child: const Text('Get Joke'),
+                ),
+              ],
+            ),
           );
         },
       ),
